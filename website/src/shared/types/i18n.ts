@@ -90,7 +90,11 @@ export interface TranslationResources {
   expiration: {
     legend: string;
     optionOneHourLabel: string;
+    optionThreeHoursLabel: string;
+    optionFiveHoursLabel: string;
     optionOneDayLabel: string;
+    optionThreeDaysLabel: string;
+    optionFiveDaysLabel: string;
     optionOneWeekLabel: string;
     forced: string;
   };

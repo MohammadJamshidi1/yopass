@@ -72,7 +72,7 @@ func init() {
 	pflag.String("api", viper.GetString("api"), "Yopass API server location")
 	pflag.String("api-token", viper.GetString("api-token"), "API token for server authentication")
 	pflag.String("decrypt", viper.GetString("decrypt"), "Decrypt secret URL")
-	pflag.String("expiration", viper.GetString("expiration"), "Duration after which secret will be deleted [1h, 1d, 1w]")
+	pflag.String("expiration", viper.GetString("expiration"), "Duration after which secret will be deleted [1h, 3h, 5h, 1d, 3d, 5d, 1w]")
 	pflag.String("file", viper.GetString("file"), "Read secret from file instead of stdin")
 	pflag.String("key", viper.GetString("key"), "Manual encryption/decryption key")
 	pflag.Bool("one-time", viper.GetBool("one-time"), "One-time download")

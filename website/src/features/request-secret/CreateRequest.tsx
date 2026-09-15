@@ -24,10 +24,16 @@ export default function CreateRequest() {
   );
   const forceExpiration = config?.FORCE_EXPIRATION;
   const expirationOptions = [
-    { value: '3600', label: t('expiration.optionOneHourLabel') },
-    { value: '86400', label: t('expiration.optionOneDayLabel') },
-    { value: '604800', label: t('expiration.optionOneWeekLabel') },
-  ];
+  { value: '3600', label: t('expiration.optionOneHourLabel') },
+  { value: '10800', label: t('expiration.optionThreeHoursLabel') },
+  { value: '18000', label: t('expiration.optionFiveHoursLabel') },
+
+  { value: '86400', label: t('expiration.optionOneDayLabel') },
+  { value: '259200', label: t('expiration.optionThreeDaysLabel') },
+  { value: '432000', label: t('expiration.optionFiveDaysLabel') },
+
+  { value: '604800', label: t('expiration.optionOneWeekLabel') },
+];
   const forcedExpirationLabel = expirationOptions.find(
     option => Number(option.value) === forceExpiration,
   )?.label;
@@ -215,6 +221,7 @@ export default function CreateRequest() {
               </div>
             </>
           )}
+          
         </fieldset>
         <div className="form-control mt-8">
           <button

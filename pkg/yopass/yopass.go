@@ -55,7 +55,13 @@ var pgpConfigArgon2 = func() *packet.Config {
 // CLI both derive their validation from it.
 var expirations = map[string]int32{
 	"1h": 3600,
+	"3h": 10800,
+	"5h": 18000,
+
 	"1d": 86400,
+	"3d": 259200,
+	"5d": 432000,
+
 	"1w": 604800,
 }
 

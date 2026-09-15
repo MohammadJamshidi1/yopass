@@ -104,9 +104,15 @@
   },
   "expiration": {
     "legend": "Deleted automatically after",
-    "optionOneHourLabel": "One Hour",
-    "optionOneDayLabel": "One Day",
-    "optionOneWeekLabel": "One Week",
+    "optionOneHourLabel": "1 hour",
+    "optionThreeHoursLabel": "3 hours",
+    "optionFiveHoursLabel": "5 hours",
+
+    "optionOneDayLabel": "1 day",
+    "optionThreeDaysLabel": "3 days",
+    "optionFiveDaysLabel": "5 days",
+
+    "optionOneWeekLabel": "1 week",
     "forced": "Secret will expire in {{expiration}}"
   },
   "features": {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import FeaturesSection from '@shared/components/FeaturesSection';
+// import FeaturesSection from '@shared/components/FeaturesSection';
 import CreateSecret from '@features/CreateSecret';
 import { Routes, Route, HashRouter } from 'react-router-dom';
 import { useConfig } from '@shared/hooks/useConfig';
@@ -137,7 +137,7 @@ export default function App() {
               </Routes>
             </div>
           </div>
-          <FeaturesSection />
+          {/* <FeaturesSection /> */}
         </main>
       </HashRouter>
       {/* Footer */}
@@ -172,7 +172,8 @@ export default function App() {
                 </>
               )}
               <span className="text-base-content/70">
-                &copy; 2014&ndash;{new Date().getFullYear()}{' '}
+              ©️ All Rights Reserved. SADRA Team (2023-2026)
+                {/* &copy; 2014&ndash;{new Date().getFullYear()}{' '}
                 <a
                   href="https://yopass.se"
                   className="text-primary hover:text-primary-focus font-medium transition-colors duration-200 underline decoration-dotted underline-offset-4 hover:decoration-solid"
@@ -180,7 +181,7 @@ export default function App() {
                   rel="noopener noreferrer"
                 >
                   Yopass
-                </a>
+                </a> */}
               </span>
             </div>
           </div>

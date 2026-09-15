@@ -1,0 +1,55 @@
+services:
+  yopass:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: yopass
+
+    environment:
+      LICENSE_KEY: ${LICENSE_KEY}
+
+      OIDC_ISSUER: ${OIDC_ISSUER}
+      OIDC_CLIENT_ID: ${OIDC_CLIENT_ID}
+      OIDC_CLIENT_SECRET: ${OIDC_CLIENT_SECRET}
+      OIDC_REDIRECT_URL: ${OIDC_REDIRECT_URL}
+      OIDC_SESSION_KEY: ${OIDC_SESSION_KEY}
+
+      REQUIRE_AUTH: "true"
+
+    command:
+      - "--database"
+      - "redis"
+      - "--redis"
+      - "redis://redis:6379/0"
+      - "--require-auth"
+      - "--app-name"
+      - "SecureShare"
+      - "--logo-url"
+      - "/logo.jpg"
+
+    volumes:
+      - "./logo/icon.png:/public/logo.jpg:ro"
+
+    depends_on:
+      - redis
+
+    ports:
+      - "1337:1337"
+
+    restart: unless-stopped
+
+    networks:
+      - default
+
+  redis:
+    image: redis:7-alpine
+    container_name: yopass-redis
+    restart: unless-stopped
+
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
+

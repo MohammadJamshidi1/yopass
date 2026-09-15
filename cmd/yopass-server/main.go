@@ -100,8 +100,8 @@ func init() {
 	pflag.String("privacy-notice-url", "", "URL to privacy notice page")
 	pflag.String("imprint-url", "", "URL to imprint/legal notice page")
 	pflag.String("public-url", "", "base URL of the public/read-only instance used in generated secret links (e.g. https://secrets.example.com)")
-	pflag.String("default-expiry", "1h", "default expiry time for secrets [1h, 1d, 1w]")
-	pflag.String("force-expiration", "", "force all secrets to use this expiration time [1h, 1d, 1w]")
+	pflag.String("default-expiry", "1h", "default expiry time for secrets [1h, 3h, 5h, 1d, 3d, 5d, 1w]")
+	pflag.String("force-expiration", "", "force all secrets to use this expiration time [1h, 3h, 5h, 1d, 3d, 5d, 1w]")
 	pflag.String("theme-light", server.DefaultThemeLight, "DaisyUI theme name for light mode")
 	pflag.String("theme-dark", server.DefaultThemeDark, "DaisyUI theme name for dark mode")
 	pflag.String("theme-custom-light", "", "JSON object of CSS variables for a custom light theme (e.g. '{\"--color-primary\":\"oklch(...)\"}')")
@@ -401,14 +401,14 @@ func validateFlags(license server.LicenseStatus, logger *zap.Logger) error {
 	// server degrades instead of refusing to start.
 	noLicense := !licenseValid && !license.Expired()
 	if v := viper.GetString("default-expiry"); v != "" && !server.ValidExpiryString(v) {
-		return fmt.Errorf("invalid --default-expiry value %q, expected one of: 1h, 1d, 1w", v)
+		return fmt.Errorf("invalid --force-expiration value %q, expected one of: 1h, 3h, 5h, 1d, 3d, 5d, 1w", v)
 	}
 
 	switch v := viper.GetString("force-expiration"); v {
-	case "", "1h", "1d", "1w":
+	case "", "1h", "3h", "5h", "1d", "3d", "5d", "1w":
 		// valid
 	default:
-		return fmt.Errorf("invalid --force-expiration value %q, expected one of: 1h, 1d, 1w", v)
+		return fmt.Errorf("invalid --default-expiry value %q, expected one of: 1h, 3h, 5h, 1d, 3d, 5d, 1w", v)
 	}
 
 	for _, flagName := range []string{"theme-light", "theme-dark"} {

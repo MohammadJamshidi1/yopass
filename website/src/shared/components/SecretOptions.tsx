@@ -50,12 +50,20 @@ export function SecretOptions<T extends SecretFormFields>({
   const forcedExpirationLabel = forceExpiration
     ? forceExpiration === 3600
       ? t('expiration.optionOneHourLabel')
-      : forceExpiration === 86400
-        ? t('expiration.optionOneDayLabel')
-        : forceExpiration === 604800
-          ? t('expiration.optionOneWeekLabel')
-          : t('expiration.optionOneHourLabel')
-    : undefined;
+      : forceExpiration === 10800
+        ? t('expiration.optionThreeHoursLabel')
+        : forceExpiration === 18000
+          ? t('expiration.optionFiveHoursLabel')
+          : forceExpiration === 86400
+            ? t('expiration.optionOneDayLabel')
+            : forceExpiration === 259200
+              ? t('expiration.optionThreeDaysLabel')
+              : forceExpiration === 432000
+                ? t('expiration.optionFiveDaysLabel')
+                : forceExpiration === 604800
+                  ? t('expiration.optionOneWeekLabel')
+                  : t('expiration.optionOneHourLabel')
+    : null;
 
   useEffect(() => {
     if (forceExpiration) {
@@ -81,10 +89,16 @@ export function SecretOptions<T extends SecretFormFields>({
         ) : (
           <div className="join w-full mt-2">
             {[
-              { value: '3600', label: t('expiration.optionOneHourLabel') },
-              { value: '86400', label: t('expiration.optionOneDayLabel') },
-              { value: '604800', label: t('expiration.optionOneWeekLabel') },
-            ].map(option => (
+                { value: '3600', label: t('expiration.optionOneHourLabel') },
+                { value: '10800', label: t('expiration.optionThreeHoursLabel') },
+                { value: '18000', label: t('expiration.optionFiveHoursLabel') },
+
+                { value: '86400', label: t('expiration.optionOneDayLabel') },
+                { value: '259200', label: t('expiration.optionThreeDaysLabel') },
+                { value: '432000', label: t('expiration.optionFiveDaysLabel') },
+
+                { value: '604800', label: t('expiration.optionOneWeekLabel') },
+              ].map(option => (
               <input
                 key={option.value}
                 type="radio"
